@@ -1,0 +1,224 @@
+<section class="w-full flex items-center hero-section h-full min-h-[663px] max-md:items-start max-md:pt-[40px] ">
+  <div class="w-full flex items-center main-container max-md:flex-col  gap-8 max-md:gap-6">
+    <div class="w-1/2 flex flex-col  gap-8 max-md:w-full max-md:gap-6 ">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'title_hero' %}
+            <h1 class="text-[6.4rem] max-md:text-[3.6rem] font-bold uppercase leading-[64px] hero-title-color max-md:leading-[34px] ">
+              {{ block.settings.title_hero }}
+            </h1>
+          {% when 'subtitle_hero' %}
+            <p class="text-[1.6rem] max-md:text-[1.4rem] leading-[22px] hero-subtitle-color ">
+              {{ block.settings.subtitle_hero }}
+            </p>
+          {% when 'hero_button' %}
+            <a
+              class="button-hero py-[16px] px-[54px] w-fit flex text-[1.6rem] font-medium justify-center items-center rounded-[62px] max-md:w-full "
+              href=" {{ block.settings.url_button }}"
+            >
+              {{ block.settings.text_button }}
+            </a>
+        {% endcase %}
+      {% endfor %}
+      <div class="flex justify-center w-fit max-md:mx-auto max-sm:hidden">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'number_hero' %}
+              {% render 'number', el: block.settings %}
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="w-1/2 flex flex-col max-md:w-full h-full max-md:h-[434px] relative">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'hero_img' %}
+            {% if block.settings.img_hero != blank %}
+              <img
+                src=" {{ block.settings.img_hero  |  image_url }}"
+                alt=" {{ block.settings.img_hero.alt }}"
+                width=" {{ block.settings.img_hero.width }}"
+                height=" {{ block.settings.img_hero.height }}"
+                class="w-full h-full object-cover"
+              >
+            {% else %}
+              <img
+                src="{{ 'hero.jpeg' |  asset_url }}"
+                alt=" {{ block.settings.img_hero.alt }}"
+                width=" {{ block.settings.img_hero.width }}"
+                height=" {{ block.settings.img_hero.height }}"
+                class=" object-cover w-full object-center h-full max-sm:object-top "
+              >
+            {% endif %}
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% style %}
+  .hero-section{
+       background-color: {{ section.settings.color_background }}
+  }
+
+  {% for block in  section.blocks %}
+      {% case block.type %}
+        {%when "title_hero" %}
+            .hero-title-color{
+                color: {{ block.settings.title_color }}
+            }
+
+        {%when "subtitle_hero" %}
+            .hero-subtitle-color{
+                color: {{ block.settings.subtitle_color }}
+            }
+        {%when "hero_button" %}
+            .button-hero{
+                background-color: {{ block.settings.button_color }};
+                color: {{ block.settings.buttontext_color }}
+            }
+      {% endcase %}
+    {% endfor %}
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Hero Section",
+  "tag": "section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Color Backgroud",
+      "default": "#F2F0F1"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Title Hero",
+      "type": "title_hero",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title_hero",
+          "label": "Title Hero",
+          "default": "FIND CLOTHES THAT MATCHES YOUR STYLE"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": " Title color",
+          "default": "#000000"
+        }
+      ]
+    },
+    {
+      "name": "Subtitle Hero",
+      "type": "subtitle_hero",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "subtitle_hero",
+          "label": "Subtitle Hero",
+          "default": "Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style."
+        },
+        {
+          "type": "color",
+          "id": "subtitle_color",
+          "label": " Subtitle color",
+          "default": "rgba(0, 0, 0, 0.6)"
+        }
+      ]
+    },
+
+    {
+      "name": " Hero Button",
+      "type": "hero_button",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "color",
+          "id": "button_color",
+          "label": " Button color",
+          "default": "#000"
+        },
+        {
+          "type": "text",
+          "id": "text_button",
+          "label": "Button Text",
+          "default": "Shop Now"
+        },
+        {
+          "type": "color",
+          "id": "buttontext_color",
+          "label": " Button text color",
+          "default": "#fff"
+        },
+        {
+          "type": "url",
+          "id": "url_button",
+          "label": "Button Url",
+          "default": "/collections/all"
+        }
+      ]
+    },
+    {
+      "name": "Number Block",
+      "type": "number_hero",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "number_text",
+          "label": " Number",
+          "default": "200+"
+        },
+        {
+          "type": "color",
+          "id": "number_color",
+          "label": " Number color",
+          "default": "#000"
+        },
+        {
+          "type": "text",
+          "id": "description_text",
+          "label": " Description Number",
+          "default": "International Brands"
+        },
+        {
+          "type": "color",
+          "id": "description_color",
+          "label": " Description Number color",
+          "default": "rgba(0, 0, 0, 0.6)"
+        },
+        {
+          "type": "checkbox",
+          "id": "padding_left",
+          "label": "Padding left",
+          "default": false
+        }
+      ]
+    },
+    {
+      "name": " Hero Image",
+      "type": "hero_img",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "img_hero",
+          "label": "Hero Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Section"
+    }
+  ]
+}
+{% endschema %}

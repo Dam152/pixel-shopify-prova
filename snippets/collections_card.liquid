@@ -1,0 +1,19 @@
+<a
+  href="{{ el.url }}"
+  class="w-full relative rounded-[20px]  bg-white h-[289px] max-sm:h-[190px] "
+>
+  {% if el.image %}
+    <img
+      src=" {{ el.image |  image_url  }}"
+      alt=" {{ el.image.alt }}"
+      class="w-fit h-full object-cover absolute right-0 rounded-[20px]"
+      width="{{ el.image.width }}"
+      height="{{ el.image.height }}"
+    >
+  {% else %}
+    {{ 'collection-1' | placeholder_svg_tag: 'w-full h-full object-cover object-center rounded-[20px]' }}
+  {% endif %}
+  <div class="w-full h-full absolute top-0 left-0 py-[25px] px-8">
+    <h3 class="text-[3.6rem] font-bold max-md:text-[2.4rem]">{{ el.title }}</h3>
+  </div>
+</a>

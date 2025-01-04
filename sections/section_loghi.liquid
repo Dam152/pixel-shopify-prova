@@ -1,0 +1,57 @@
+<section class="w-full py-[48px] loghi-section-container overflow-hidden">
+  <div class="w-full">
+    <div class="loghi-swiper w-full">
+      <div class="swiper-wrapper">
+        {% for item in section.blocks %}
+          <div class="swiper-slide logo-slide">
+            <img
+              src="{{ item.settings.logo_item | image_url }}"
+              alt=" {{ item.logo_item.alt }}"
+              width="{{ item.settings.logo_item.width }}"
+              height="{{ item.settings.logo_item.height }}"
+              class="h-[33px] w-full"
+            >
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% style %}
+  .loghi-section-container{
+       background-color:{{ section.settings.section_background }}
+  }
+{% endstyle %}
+{% schema %}
+{
+  "name": "Loghi Section",
+  "tag": "section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section Background",
+      "default": "#000"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Loghi",
+      "type": "loghi",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo_item",
+          "label": "Logo"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Loghi Section"
+    }
+  ]
+}
+{% endschema %}

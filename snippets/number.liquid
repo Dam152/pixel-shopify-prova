@@ -1,0 +1,14 @@
+<div
+  class="pr-8 border-r border-slate-300 flex flex-col number-container"
+  style="{% if el.padding_left == true %} padding-left: 32px; {% endif %}"
+>
+  <p
+    class="text-[4rem] font-bold"
+    style="color: {{ el.number_color }};"
+  >
+    {{ el.number_text }}
+  </p>
+  <p class="text-[1.6rem] leading-[22px] number-color-description" style=" color: {{ el.description_color }}">
+    {{ el.description_text }}
+  </p>
+</div>

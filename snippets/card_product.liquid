@@ -1,0 +1,21 @@
+<a href="{{ el.url }}" class="w-full flex flex-col gap-4">
+  <img
+    src="{{ el.featured_image |  image_url  }}"
+    alt="{{ el.featured_image.alt }}"
+    width="{{ el.featured_image.width }}"
+    height="{{ el.featured_image.height }}"
+    class="h-[298px] object-cover rounded-[20px] transition ease-linear duration-300 hover:scale-105  max-sm:hover:scale-100 max-sm:transition-none w-full "
+  >
+  <h5 class="text-[2rem] font-bold max-md:text-[1.6rem]">{{ el.title }}</h5>
+  <div class="flex gap-4 items-center flex-wrap">
+    <span class="font-bold text-[2.4rem] max-md:text-[2rem]"> {{ el.price | money }}</span>
+    <span class="font-bold text-[2.4rem] max-md:text-[2rem] opacity-40 line-through">
+      {{ el.compare_at_price | money -}}
+    </span>
+    {% if el.compare_at_price %}
+      <span class="px-[14px] py-[6px] rounded-[62px] flex justify-center items-center bg-pink-200  text-red-500">
+        {{- el.compare_at_price | minus: el.price | times: 100 | divided_by: el.compare_at_price }}%</span
+      >
+    {% endif %}
+  </div>
+</a>

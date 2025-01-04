@@ -1,0 +1,152 @@
+<header
+  x-data="{openMenu: false}"
+  x-init="$watch('openMenu', value => document.body.style.overflow = value ? 'hidden' : '')"
+  class="fixed header-container-section top-0 left-0 h-[80px] flex items-center  w-screen max-sm:h-[64px] z-[1000] overflow-hidden "
+>
+  <div class=" w-full main-container flex justify-between items-center gap-6">
+    <div class="flex gap-4 items-center">
+      <span @click="openMenu= !openMenu" class="md:hidden cursor-pointer">{% render 'icons', name: 'hamb_menu' %}</span>
+      <a href="/" class="font-bold text-[3.2rem] max-md:text-[2.5rem] logo-header">
+        {{ section.settings.logo_header }}
+      </a>
+    </div>
+    <div x-data="{ openSelect : false }" class="flex gap-6 max-md:hidden">
+      {% for link in section.settings.menu_list.links %}
+        {% if link.links == blank %}
+          <a href=" {{ link.url }}"> {{ link.title }}</a>
+
+        {% else %}
+          <button @click="openSelect = !openSelect" class="flex items-center gap-2">
+            {{ link.title }}
+            {% render 'icons', name: 'arrow_down' %}
+          </button>
+          <div
+            x-show="openSelect"
+            @click.away="openSelect = false"
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="transition ease-in duration-300"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+
+            class="w-full flex gap-6 justify-center bg-white fixed top-[80px] z-50 right-0 min-h-[128px] border-t border-slate-300 pt-12 "
+          >
+            {% for sublink in link.links %}
+              <a href="{{ sublink.url }}"> {{ sublink.title }}</a>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div
+      class="w-full max-w-[577px] py-3 px-4  min-h-[40px] rounded-[62px] bg-[#F0F0F0] flex items-center gap-3 max-xl:hidden"
+    >
+      {% render 'icons', name: 'search' %}
+      <form action="{{ routes.search_url }}">
+        <input
+          type="text"
+          name="q"
+          value="{{ search.terms | escape }}"
+          placeholder="Search for products..."
+          class="bg-transparent focus:outline-none"
+        >
+      </form>
+    </div>
+    <div class="flex gap-6 max-sm:gap-3">
+      <a href=" {{ routes.search_url }}" class="xl:hidden">{% render 'icons', name: 'search' %}</a>
+      <a href=" {{ routes.cart_url }}" class="">{% render 'icons', name: 'cart' %}</a>
+      <a href="{{ routes.account_login_url }}" class="">{% render 'icons', name: 'auth' %}</a>
+    </div>
+  </div>
+
+  <div
+    x-show="openMenu"
+    x-transition:enter="transition forwards duration-300"
+    x-transition:enter-start="transform -translate-x-full"
+    x-transition:enter-end="transform translate-x-0"
+    x-transition:leave="transition forwards duration-300"
+    x-transition:leave-start=" transform translate-x-0"
+    x-transition:leave-end="transform -translate-x-full"
+    class=" w-3/4 bg-inherit h-screen flex flex-col gap-6 fixed top-0 md:hidden border-r border-slate-300"
+  >
+    <div class="w-full h-[80px] max-sm:h-[64px] flex items-center gap-4 py-6 px-6 max-sm:px-4">
+      <span @click="openMenu = !openMenu" class="md:hidden cursor-pointer">
+        {% render 'icons', name: 'close_menu' %}
+      </span>
+    </div>
+    <div class="w-full flex flex-col gap-6 px-6 max-sm:px-4">
+      {% for link in section.settings.menu_list.links %}
+        {% if link.links == blank %}
+          <a href=" {{ link.url }}" class="text-[2rem] border-b border-slate-300 pb-4"> {{ link.title }}</a>
+        {% else %}
+          <div x-data="{accordion: false}" class="w-full flex flex-col gap-2 border-b border-slate-300 pb-4">
+            <button
+              @click="accordion = !accordion"
+              class="flex items-center gap-2 text-[2rem]"
+            >
+              {{ link.title }}
+              {% render 'icons', name: 'arrow_down' %}
+            </button>
+            <div
+              x-show="accordion"
+              x-transition:enter="transition ease-out duration-300"
+              x-transition:enter-start="opacity-0"
+              x-transition:enter-end="opacity-100"
+              x-transition:leave="transition ease-in duration-300"
+              x-transition:leave-start="opacity-100"
+              x-transition:leave-end="opacity-0"
+              class="flex flex-col gap-4"
+            >
+              {% for sublink in link.links %}
+                <a href="{{ sublink.url }}"> {{ sublink.title }}</a>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</header>
+
+{% style %}
+  .header-container-section {
+     background-color: {{ section.settings.bgcolor_header }}
+  }
+  .logo-header{
+     color: {{ section.settings.logo_color }}
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Header",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bgcolor_header",
+      "label": "Header Background Color",
+      "default": "#fff"
+    },
+    {
+      "type": "text",
+      "id": "logo_header",
+      "label": "Logo",
+      "default": "Shop.co"
+    },
+    {
+      "type": "color",
+      "id": "logo_color",
+      "label": "Logo color",
+      "default": "#000"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_list",
+      "label": "Menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}
