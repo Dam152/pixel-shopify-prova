@@ -8,8 +8,8 @@
       </h1>
     </div>
     <div class="max-w-[349px] w-full max-sm:max-w-full">
-      <form action="" class="flex flex-col gap-[14px] w-full">
-        <div class="flex items-center gap-3 py-3 px-4 rounded-[62px] w-full bg-white min-h-[46px]">
+      {% form 'customer' %}
+        <div class="flex items-center gap-3 py-3 px-4 rounded-[62px] w-full bg-white min-h-[46px] mb-[14px]">
           {% render 'icons', name: 'mail_icon' %}
           <input
             type="email"
@@ -17,6 +17,7 @@
             id="email"
             placeholder="Enter your email address"
             class="bg-transparent focus:outline-none placeholder:opacity-40 placeholder:text-black text-[1.6rem] max-sm:text-[1.4rem]"
+            required
           >
         </div>
         <button
@@ -25,7 +26,7 @@
         >
           {{ el.settings.button_title_pre_footer }}
         </button>
-      </form>
+      {% endform %}
     </div>
   </div>
 </div>

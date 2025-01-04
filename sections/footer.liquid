@@ -7,6 +7,40 @@
         {% render 'pre_footer', el: block %}
     {% endcase %}
   {% endfor %}
+  <div class="w-full flex justify-between main-container max-sm:flex-col gap-6">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'info_footer' %}
+          <div class="flex flex-col h-full max-w-[249px] gap-5">
+            <h1 class="text-[3.3rem] font-bold max-md:text-[2.8rem]">{{ block.settings.info_footer_title }}</h1>
+            <p class="text-[1.4rem] text-black opacity-40 leading-[22px]">
+              {{ block.settings.info_footer_description }}
+            </p>
+            <div class="flex gap-4 mt-3 max-sm:mt-0">
+              {% for block in section.blocks %}
+                {% case block.type %}
+                  {% when 'socials_footer' %}
+                    <a
+                      href=" {{ block.settings.social_url }}"
+                      class="w-12 h-12 rounded-[50%] border border-black flex justify-center items-center"
+                      target="_blank"
+                    >
+                      <img
+                        src="{{ block.settings.icon_social |  image_url  }}"
+                        alt=" {{ block.settings.icon_social.alt }}"
+                        width="{{ block.settings.icon_social.width }}"
+                        height="{{ block.settings.icon_social.height }}"
+                        class="w-6 h-6 object-cover object-center"
+                    ></a>
+                {% endcase %}
+              {% endfor %}
+            </div>
+          </div>
+        {% else %}
+
+      {% endcase %}
+    {% endfor %}
+  </div>
 </footer>
 
 {% style %}
@@ -68,6 +102,43 @@
           "id": "button_title_pre_footer",
           "label": "Button Title Pre Footer",
           "default": "Subscribe to Newsletter"
+        }
+      ]
+    },
+    {
+      "name": "Info",
+      "type": "info_footer",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "info_footer_title",
+          "label": "Info Footer Title",
+          "default": "Shop.co"
+        },
+        {
+          "type": "text",
+          "id": "info_footer_description",
+          "label": "Info Footer Description",
+          "default": "We have clothes that suits your style and which you’re proud to wear. From women to men."
+        }
+      ]
+    },
+    {
+      "name": "Socials",
+      "type": "socials_footer",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_social",
+          "label": "Icon Social"
+        },
+        {
+          "type": "url",
+          "id": "social_url",
+          "label": "Social_url",
+          "default": "/"
         }
       ]
     }
