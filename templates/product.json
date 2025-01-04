@@ -19,7 +19,7 @@
         "featured_collection": "top-selling",
         "limit_collection": 4,
         "button_collection_text": "View More",
-        "button_collection_seprate": true
+        "button_collection_seprate": false
       }
     }
   },
