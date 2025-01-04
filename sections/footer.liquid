@@ -7,7 +7,7 @@
         {% render 'pre_footer', el: block %}
     {% endcase %}
   {% endfor %}
-  <div class="w-full flex justify-between main-container max-sm:flex-col gap-6">
+  <div class="w-full flex justify-between  main-container max-sm:flex-col gap-12 max-lg:mt-24 max-sm:mt-0">
     {% for block in section.blocks %}
       {% case block.type %}
         {% when 'info_footer' %}
@@ -40,6 +40,22 @@
 
       {% endcase %}
     {% endfor %}
+
+    <div class=" w-3/4 max-md:w-full gap-12 flex justify-between  max-md:grid max-md:grid-cols-2">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'menu_footer' %}
+            <div class="flex flex-col gap-5">
+              <span class="text-[1.6rem] font-medium max-md:text-[1.4rem] uppercase mb-3 max-sm:mb-0">
+                {{- block.settings.menu_list_social.title -}}
+              </span>
+              {% for item in block.settings.menu_list_social.links %}
+                <a href="{{ item.url }}" class="text-[1.6rem] text-slate-600 max-md:text-[1.4rem]"> {{ item.title }}</a>
+              {% endfor %}
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
   </div>
 </footer>
 
@@ -139,6 +155,19 @@
           "id": "social_url",
           "label": "Social_url",
           "default": "/"
+        }
+      ]
+    },
+
+    {
+      "name": "Menu footer",
+      "type": "menu_footer",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "menu_list_social",
+          "label": "Menu Social Select"
         }
       ]
     }

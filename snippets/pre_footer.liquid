@@ -1,13 +1,13 @@
-<div class="main-container  absolute top-0 min-h-[180px] max-sm:min-h-[289px] transform  -translate-y-[90px] max-sm:-translate-y-[144px] px-8 max-md:px-6 max-sm:px-4">
+<div class="main-container absolute top-0 min-h-[180px] max-sm:min-h-[289px] transform  -translate-y-[90px] max-sm:-translate-y-[144px]">
   <div
-    class="pre-footer-color w-full items-center h-full rounded-[20px] flex justify-between max-sm:justify-start max-sm:flex-col gap-8 py-[36px] px-[64px] max-sm:py-[32px] max-sm:px-[24px]"
+    class="pre-footer-color w-full items-center h-full rounded-[20px] flex justify-between max-sm:justify-start max-md:flex-col gap-8 py-[36px] px-[64px] max-md:py-[32px] max-md:px-[24px]"
   >
-    <div class="max-w-[551px] w-full max-sm:max-w-full">
-      <h1 class="color-title-pre-footer uppercase text-[4rem] leading-[45px] font-bold max-sm:text-[3.2rem] max-sm:leading-[35px]">
+    <div class="max-w-[551px] w-full max-md:max-w-full">
+      <h1 class="color-title-pre-footer text-left uppercase text-[4rem] leading-[45px] font-bold max-md:text-[3.2rem] max-md:leading-[35px]">
         {{ el.settings.pre_footer_title }}
       </h1>
     </div>
-    <div class="max-w-[349px] w-full max-sm:max-w-full">
+    <div class="max-w-[349px] w-full max-md:max-w-full">
       {% form 'customer' %}
         <div class="flex items-center gap-3 py-3 px-4 rounded-[62px] w-full bg-white min-h-[46px] mb-[14px]">
           {% render 'icons', name: 'mail_icon' %}
