@@ -52,6 +52,45 @@
     },
     "loghi": {
       "type": "section_loghi",
+      "blocks": {
+        "loghi_AUxhj3": {
+          "type": "loghi",
+          "settings": {
+            "logo_item": "shopify://shop_images/versace.svg"
+          }
+        },
+        "loghi_6WEQCN": {
+          "type": "loghi",
+          "settings": {
+            "logo_item": "shopify://shop_images/zara-logo-1_1.svg"
+          }
+        },
+        "loghi_ky4HDh": {
+          "type": "loghi",
+          "settings": {
+            "logo_item": "shopify://shop_images/gucci-logo-1_1.svg"
+          }
+        },
+        "loghi_d773y7": {
+          "type": "loghi",
+          "settings": {
+            "logo_item": "shopify://shop_images/prada-logo-1_1.svg"
+          }
+        },
+        "loghi_Gh3wAy": {
+          "type": "loghi",
+          "settings": {
+            "logo_item": "shopify://shop_images/Group.svg"
+          }
+        }
+      },
+      "block_order": [
+        "loghi_AUxhj3",
+        "loghi_6WEQCN",
+        "loghi_ky4HDh",
+        "loghi_d773y7",
+        "loghi_Gh3wAy"
+      ],
       "settings": {
         "section_background": "#000"
       }
