@@ -1,10 +1,30 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
-      "type": "main-product"
+      "type": "main-product",
+      "settings": {}
+    },
+    "featured_collection_3RhMDj": {
+      "type": "featured_collection",
+      "settings": {
+        "featured_collection": "top-selling",
+        "limit_collection": 4,
+        "button_collection_text": "View More",
+        "button_collection_seprate": true
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "featured_collection_3RhMDj"
   ]
 }
