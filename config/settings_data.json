@@ -1,8 +1,48 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-  "current": "Default",
+  "current": {
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "bgcolor_header": "#fff",
+          "logo_header": "Shop.co",
+          "logo_color": "#000",
+          "menu_list": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "pre_footer_bnF4rP": {
+            "type": "pre_footer",
+            "settings": {
+              "color_pre_footer": "#000",
+              "pre_footer_title": "STAY UPTO DATE ABOUT OUR LATEST OFFERS",
+              "color_title_pre_footer": "#fff",
+              "button_title_pre_footer": "Subscribe to Newsletter"
+            }
+          }
+        },
+        "block_order": [
+          "pre_footer_bnF4rP"
+        ],
+        "settings": {
+          "color_footer": "#F0F0F0"
+        }
+      }
+    },
+    "content_for_index": []
+  },
   "presets": {
-    "Default": {
-      "sections": {}
-    }
+    "Default": {}
   }
 }
