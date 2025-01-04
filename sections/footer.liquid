@@ -1,0 +1,76 @@
+<footer
+  class="w-full px-8 footer-color pt-[140px] pb-[88px] max-sm:pt-[189px] max-sm:pb-[77px] max-sm:px-4 max-md:px-6 mt-[170px] max-sm:mt-[184px] flex flex-col items-center relative"
+>
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'pre_footer' %}
+        {% render 'pre_footer', el: block %}
+    {% endcase %}
+  {% endfor %}
+</footer>
+
+{% style %}
+  .footer-color {
+    background-color: {{ section.settings.color_footer }};
+  }
+
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'pre_footer' %}
+        .pre-footer-color {
+          background-color: {{ block.settings.color_pre_footer }};
+        }
+        .color-title-pre-footer {
+          color: {{ block.settings.color_title_pre_footer }};
+        }
+    {% endcase %}
+  {% endfor %}
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Footer",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "color_footer",
+      "label": "Footer Color",
+      "default": "#F0F0F0"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Pre Footer",
+      "type": "pre_footer",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "color",
+          "id": "color_pre_footer",
+          "label": "Pre Footer Color",
+          "default": "#000"
+        },
+        {
+          "type": "text",
+          "id": "pre_footer_title",
+          "label": "Pre Footer Title",
+          "default": "STAY UPTO DATE ABOUT OUR LATEST OFFERS"
+        },
+        {
+          "type": "color",
+          "id": "color_title_pre_footer",
+          "label": "Color Title Pre Footer",
+          "default": "#fff"
+        },
+        {
+          "type": "text",
+          "id": "button_title_pre_footer",
+          "label": "Button Title Pre Footer",
+          "default": "Subscribe to Newsletter"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,31 @@
+<div class="main-container  absolute top-0 min-h-[180px] max-sm:min-h-[289px] transform  -translate-y-[90px] max-sm:-translate-y-[144px] px-8 max-md:px-6 max-sm:px-4">
+  <div
+    class="pre-footer-color w-full items-center h-full rounded-[20px] flex justify-between max-sm:justify-start max-sm:flex-col gap-8 py-[36px] px-[64px] max-sm:py-[32px] max-sm:px-[24px]"
+  >
+    <div class="max-w-[551px] w-full max-sm:max-w-full">
+      <h1 class="color-title-pre-footer uppercase text-[4rem] leading-[45px] font-bold max-sm:text-[3.2rem] max-sm:leading-[35px]">
+        {{ el.settings.pre_footer_title }}
+      </h1>
+    </div>
+    <div class="max-w-[349px] w-full max-sm:max-w-full">
+      <form action="" class="flex flex-col gap-[14px] w-full">
+        <div class="flex items-center gap-3 py-3 px-4 rounded-[62px] w-full bg-white min-h-[46px]">
+          {% render 'icons', name: 'mail_icon' %}
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Enter your email address"
+            class="bg-transparent focus:outline-none placeholder:opacity-40 placeholder:text-black text-[1.6rem] max-sm:text-[1.4rem]"
+          >
+        </div>
+        <button
+          type="submit"
+          class=" border border-black px-4 py-3 flex justify-center items-center bg-white rounded-[62px] w-full text-[1.6rem] font-medium min-h-[46px] h-full max-sm:text-[1.4rem]"
+        >
+          {{ el.settings.button_title_pre_footer }}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
