@@ -1517,6 +1517,9 @@ video {
 .max-w-\[577px\] {
   max-width: 577px;
 }
+.max-w-\[162px\] {
+  max-width: 162px;
+}
 .flex-shrink {
   flex-shrink: 1;
 }
@@ -1765,6 +1768,15 @@ video {
 }
 .pt-\[140px\] {
   padding-top: 140px;
+}
+.pt-\[32px\] {
+  padding-top: 32px;
+}
+.pt-\[64px\] {
+  padding-top: 64px;
+}
+.pb-\[64px\] {
+  padding-bottom: 64px;
 }
 .text-left {
   text-align: left;
@@ -2041,6 +2053,10 @@ video {
 
   .max-md\:mt-24 {
     margin-top: 6rem;
+  }
+
+  .max-md\:flex {
+    display: flex;
   }
 
   .max-md\:grid {
