@@ -1,11 +1,26 @@
 <section class="w-full">
   <div class="main-container border-t border-b border-slate-300 max-sm:py-[32px] py-[64px] flex max-md:flex-col gap-6">
-    <div class="w-1/2 border flex max-md:w-full gap-4 max-md:flex-col">
-      <div class="flex flex-col gap-4 max-w-[162px] max-md:flex">
-        {% for image in product.images %}
-        {% endfor %}
+    <div class="w-1/2 flex max-md:w-full gap-4 max-md:flex-col h-[530px] overflow-hidden">
+      <div class="flex flex-col gap-4 max-w-[162px] max-md:flex w-full ">
+        <div x-data="{ index: 0, logIndex() { console.log(this.index); } }" class="product-image-slider w-full h-full">
+          <div class="swiper-wrapper">
+            {% for item in product.images %}
+              <div @click="index = {{ forloop.index0 }}; logIndex()" class="swiper-slide">
+                <img
+                  src="{{ item | image_url }}"
+                  alt="{{ item.alt }}"
+                  width="{{ item.width }}"
+                  height="{{ item.height }}"
+                  class="h-[167px] rounded-[24px]"
+                  x-bind:class="index == {{ forloop.index0 }} ? 'border border-black' : ''"
+                >
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="w-full"></div>
       </div>
     </div>
-    <div class="w-1/2 border flex flex-col max-md:w-full"></div>
+    <div class="w-1/2  flex flex-col max-md:w-full"></div>
   </div>
 </section>

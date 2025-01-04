@@ -3486,6 +3486,26 @@ var swiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_0__["default"](".loghi-s
 
 /***/ }),
 
+/***/ "./assets/product-slider.js":
+/*!**********************************!*\
+  !*** ./assets/product-slider.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var swiper_bundle__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper/bundle */ "./node_modules/swiper/swiper-bundle.mjs");
+/* harmony import */ var swiper_css_bundle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper/css/bundle */ "./node_modules/swiper/swiper-bundle.css");
+
+
+var swiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_0__["default"](".product-image-slider", {
+  direction: "vertical",
+  slidesPerView: 3,
+  spaceBetween: 16
+});
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -3500,6 +3520,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var aos__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! aos */ "./node_modules/aos/dist/aos.js");
 /* harmony import */ var aos__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(aos__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var aos_dist_aos_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! aos/dist/aos.css */ "./node_modules/aos/dist/aos.css");
+/* harmony import */ var _assets_product_slider_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../assets/product-slider.js */ "./assets/product-slider.js");
+
 
 
 
