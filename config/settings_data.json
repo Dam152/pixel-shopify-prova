@@ -55,13 +55,15 @@
           "socials_footer_DhFg7Q": {
             "type": "socials_footer",
             "settings": {
-              "social_url": "/"
+              "icon_social": "shopify://shop_images/5305170_bird_social_media_social_network_tweet_twitter_icon_50e9539b-a4bb-4a23-9f4d-2be098cc8884.svg",
+              "social_url": "https://x.com"
             }
           },
           "socials_footer_M3Wkqx": {
             "type": "socials_footer",
             "settings": {
-              "social_url": "/"
+              "icon_social": "shopify://shop_images/5305160_inspiration_pin_pinterest_pinterest_logo_icon_10616806-7861-4532-94bb-5cde9de41d40.png",
+              "social_url": "https://it.pintrest.com"
             }
           }
         },
