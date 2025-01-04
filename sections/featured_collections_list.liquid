@@ -9,7 +9,7 @@
     <h1 class="font-bold uppercase text-[4.8rem] max-md:text-[3.2rem] max-sm:px-4 my-[64px] max-sm:mt-8 text-center max-sm:leading-[36px]">
       {{ section.settings.title_section }}
     </h1>
-    <div class="w-full grid  grid-cols-[1fr_400px] gap-6 mb-6 max-sm:grid-cols-1 " data-aos="zoom-in">
+    <div class="w-full grid  grid-cols-[1fr_400px] gap-6 mb-6 max-sm:grid-cols-1 ">
       {% if section.settings.collection_one.title %}
         {% render 'collections_card', el: section.settings.collection_one %}
       {% endif %}
@@ -17,7 +17,7 @@
         {% render 'collections_card', el: section.settings.collection_two %}
       {% endif %}
     </div>
-    <div class="w-full grid  grid-cols-[400px_1fr] gap-6 max-sm:grid-cols-1" data-aos="zoom-in">
+    <div class="w-full grid  grid-cols-[400px_1fr] gap-6 max-sm:grid-cols-1">
       {% if section.settings.collection_three.title %}
         {% render 'collections_card', el: section.settings.collection_three %}
       {% endif %}
