@@ -13,9 +13,9 @@
       "header": {
         "type": "header",
         "settings": {
-          "bgcolor_header": "#fff",
+          "bgcolor_header": "#ffffff",
           "logo_header": "Shop.co",
-          "logo_color": "#000",
+          "logo_color": "#000000",
           "menu_list": "main-menu"
         }
       },
@@ -25,18 +25,55 @@
           "pre_footer_bnF4rP": {
             "type": "pre_footer",
             "settings": {
-              "color_pre_footer": "#000",
+              "color_pre_footer": "#000000",
               "pre_footer_title": "STAY UPTO DATE ABOUT OUR LATEST OFFERS",
-              "color_title_pre_footer": "#fff",
+              "color_title_pre_footer": "#ffffff",
               "button_title_pre_footer": "Subscribe to Newsletter"
+            }
+          },
+          "info_footer_dBwfPH": {
+            "type": "info_footer",
+            "settings": {
+              "info_footer_title": "Shop.co",
+              "info_footer_description": "We have clothes that suits your style and which you’re proud to wear. From women to men."
+            }
+          },
+          "socials_footer_hVX3xK": {
+            "type": "socials_footer",
+            "settings": {
+              "social_url": "/"
+            }
+          },
+          "socials_footer_DhFg7Q": {
+            "type": "socials_footer",
+            "settings": {
+              "social_url": "/"
+            }
+          },
+          "socials_footer_M3Wkqx": {
+            "type": "socials_footer",
+            "settings": {
+              "social_url": "/"
+            }
+          },
+          "socials_footer_ntPrb7": {
+            "type": "socials_footer",
+            "settings": {
+              "icon_social": "shopify://shop_images/5305153_fb_facebook_facebook_logo_icon_c74cef94-4bbf-4c4d-aaf0-8301d3f840e2.svg",
+              "social_url": "https://Facebook.com"
             }
           }
         },
         "block_order": [
-          "pre_footer_bnF4rP"
+          "pre_footer_bnF4rP",
+          "info_footer_dBwfPH",
+          "socials_footer_hVX3xK",
+          "socials_footer_DhFg7Q",
+          "socials_footer_M3Wkqx",
+          "socials_footer_ntPrb7"
         ],
         "settings": {
-          "color_footer": "#F0F0F0"
+          "color_footer": "#f0f0f0"
         }
       }
     },
