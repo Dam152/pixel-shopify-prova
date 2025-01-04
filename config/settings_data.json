@@ -65,6 +65,30 @@
               "icon_social": "shopify://shop_images/5305160_inspiration_pin_pinterest_pinterest_logo_icon_10616806-7861-4532-94bb-5cde9de41d40.png",
               "social_url": "https://it.pintrest.com"
             }
+          },
+          "menu_footer_fW3h73": {
+            "type": "menu_footer",
+            "settings": {
+              "menu_list_social": "footer"
+            }
+          },
+          "menu_footer_63LKy3": {
+            "type": "menu_footer",
+            "settings": {
+              "menu_list_social": "customer-account-main-menu"
+            }
+          },
+          "menu_footer_aX4rPh": {
+            "type": "menu_footer",
+            "settings": {
+              "menu_list_social": "faqs"
+            }
+          },
+          "menu_footer_CdHkkC": {
+            "type": "menu_footer",
+            "settings": {
+              "menu_list_social": "resources"
+            }
           }
         },
         "block_order": [
@@ -73,7 +97,11 @@
           "socials_footer_ntPrb7",
           "socials_footer_hVX3xK",
           "socials_footer_DhFg7Q",
-          "socials_footer_M3Wkqx"
+          "socials_footer_M3Wkqx",
+          "menu_footer_fW3h73",
+          "menu_footer_63LKy3",
+          "menu_footer_aX4rPh",
+          "menu_footer_CdHkkC"
         ],
         "settings": {
           "color_footer": "#f0f0f0"
