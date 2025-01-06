@@ -3498,10 +3498,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var swiper_css_bundle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper/css/bundle */ "./node_modules/swiper/swiper-bundle.css");
 
 
-var swiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_0__["default"](".product-image-slider", {
-  direction: "vertical",
-  slidesPerView: 3,
-  spaceBetween: 16
+var swiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_0__["default"](".product-image-slider-thumb", {
+  watchSlidesProgress: true,
+  breakpoints: {
+    768: {
+      direction: "vertical",
+      slidesPerView: 3,
+      spaceBetween: 16
+    },
+    640: {
+      direction: "horizontal",
+      slidesPerView: 3,
+      spaceBetween: 16
+    },
+    0: {
+      direction: "horizontal",
+      slidesPerView: 3,
+      spaceBetween: 12
+    }
+  }
+});
+var swiper2 = new swiper_bundle__WEBPACK_IMPORTED_MODULE_0__["default"](".product-image-slider", {
+  freeMode: true,
+  spaceBetween: 16,
+  thumbs: {
+    swiper: swiper
+  },
+  allowTouchMove: false
 });
 
 /***/ }),
