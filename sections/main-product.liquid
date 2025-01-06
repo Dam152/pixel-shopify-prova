@@ -1,5 +1,5 @@
 <section class="w-full">
-  <div class="main-container border-t border-b border-slate-300 max-sm:py-[32px] py-[64px] flex max-md:flex-col gap-6">
+  <div class="main-container border-t border-b border-slate-300 max-sm:py-[32px] py-[64px] flex max-md:flex-col gap-10 max-md:gap-6">
     <div class="w-1/2 flex max-md:w-full gap-4 max-md:flex-col-reverse h-[530px] overflow-hidden max-sm:h-auto">
       <div class="flex flex-col gap-4 max-w-[162px] max-md:flex w-full max-md:max-w-full">
         <div
@@ -38,6 +38,57 @@
         </div>
       </div>
     </div>
-    <div class="w-1/2  flex flex-col max-md:w-full"></div>
+    <div class="w-1/2  flex flex-col max-md:w-full">
+      {% form 'product', product %}
+        <div class="flex flex-col w-full gap-6 max-sm:gap-4">
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'title_product' %}
+                <h4 class="text-[4rem] font-bold max-md:max-w-[260px] max-md:text-[3rem] uppercase leading-[28px]">
+                  {{ product.title }}
+                </h4>
+
+              {%- when 'price_product' -%}
+                <div class="flex gap-4 ">
+                  <span class="text-[3.2rem] font-bold max-sm:text-[2.4rem]">{{ product.price | money }}</span>
+                  <span class="text-[3.2rem] font-bold max-sm:text-[2.4rem] text-slate-500 line-through">
+                    {{- product.compare_at_price | money -}}
+                  </span>
+                </div>
+
+              {% when 'description_product' %}
+                <div class="text-[1.6rem] max-sm:text-[1.4rem] text-slate-700 leading-[22px] border-b border-slate-300 pb-6">
+                  {{ product.content }}
+                </div>
+            {% endcase %}
+          {% endfor %}
+        </div>
+      {% endform %}
+    </div>
   </div>
 </section>
+
+{% schema %}
+{
+  "name": "Template Product",
+  "tag": "section",
+  "settings": [],
+  "blocks": [
+    {
+      "name": "Title Product",
+      "type": "title_product",
+      "limit": 1
+    },
+    {
+      "name": "Price Product",
+      "type": "price_product",
+      "limit": 1
+    },
+    {
+      "name": "Description Product",
+      "type": "description_product",
+      "limit": 1
+    }
+  ]
+}
+{% endschema %}

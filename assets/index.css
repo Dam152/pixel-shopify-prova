@@ -1576,6 +1576,9 @@ video {
 .justify-between {
   justify-content: space-between;
 }
+.gap-10 {
+  gap: 2.5rem;
+}
 .gap-12 {
   gap: 3rem;
 }
@@ -1757,6 +1760,9 @@ video {
 .pb-4 {
   padding-bottom: 1rem;
 }
+.pb-6 {
+  padding-bottom: 1.5rem;
+}
 .pb-\[88px\] {
   padding-bottom: 88px;
 }
@@ -1861,6 +1867,9 @@ video {
 .leading-\[22px\] {
   line-height: 22px;
 }
+.leading-\[28px\] {
+  line-height: 28px;
+}
 .leading-\[45px\] {
   line-height: 45px;
 }
@@ -1875,9 +1884,17 @@ video {
   --tw-text-opacity: 1;
   color: rgb(239 68 68 / var(--tw-text-opacity, 1));
 }
+.text-slate-500 {
+  --tw-text-opacity: 1;
+  color: rgb(100 116 139 / var(--tw-text-opacity, 1));
+}
 .text-slate-600 {
   --tw-text-opacity: 1;
   color: rgb(71 85 105 / var(--tw-text-opacity, 1));
+}
+.text-slate-700 {
+  --tw-text-opacity: 1;
+  color: rgb(51 65 85 / var(--tw-text-opacity, 1));
 }
 .underline {
   text-decoration-line: underline;
@@ -2038,6 +2055,10 @@ video {
     width: 100%;
   }
 
+  .max-md\:max-w-\[260px\] {
+    max-width: 260px;
+  }
+
   .max-md\:max-w-full {
     max-width: 100%;
   }
@@ -2113,6 +2134,10 @@ video {
     font-size: 3.6rem;
   }
 
+  .max-md\:text-\[3rem\] {
+    font-size: 3rem;
+  }
+
   .max-md\:leading-\[34px\] {
     line-height: 34px;
   }
@@ -2143,40 +2168,28 @@ video {
     display: none;
   }
 
-  .max-sm\:h-\[190px\] {
-    height: 190px;
-  }
-
-  .max-sm\:h-\[64px\] {
-    height: 64px;
-  }
-
-  .max-sm\:h-\[290px\] {
-    height: 290px;
-  }
-
-  .max-sm\:h-\[107px\] {
-    height: 107px;
-  }
-
   .max-sm\:h-\[106px\] {
     height: 106px;
   }
 
-  .max-sm\:h-auto {
-    height: auto;
+  .max-sm\:h-\[190px\] {
+    height: 190px;
   }
 
   .max-sm\:h-\[390px\] {
     height: 390px;
   }
 
-  .max-sm\:min-h-\[289px\] {
-    min-height: 289px;
+  .max-sm\:h-\[64px\] {
+    height: 64px;
   }
 
-  .max-sm\:w-\[111px\] {
-    width: 111px;
+  .max-sm\:h-auto {
+    height: auto;
+  }
+
+  .max-sm\:min-h-\[289px\] {
+    min-height: 289px;
   }
 
   .max-sm\:-translate-y-\[144px\] {
@@ -2198,6 +2211,10 @@ video {
 
   .max-sm\:gap-3 {
     gap: 0.75rem;
+  }
+
+  .max-sm\:gap-4 {
+    gap: 1rem;
   }
 
   .max-sm\:gap-\[32px\] {
@@ -2244,6 +2261,10 @@ video {
 
   .max-sm\:text-\[1\.4rem\] {
     font-size: 1.4rem;
+  }
+
+  .max-sm\:text-\[2\.4rem\] {
+    font-size: 2.4rem;
   }
 
   .max-sm\:leading-\[36px\] {

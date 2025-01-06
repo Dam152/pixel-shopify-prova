@@ -3499,7 +3499,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var swiper = new swiper_bundle__WEBPACK_IMPORTED_MODULE_0__["default"](".product-image-slider-thumb", {
-  watchSlidesProgress: true,
+  mousewheel: {
+    releaseOnEdges: true
+  },
   breakpoints: {
     768: {
       direction: "vertical",
@@ -3524,7 +3526,8 @@ var swiper2 = new swiper_bundle__WEBPACK_IMPORTED_MODULE_0__["default"](".produc
   thumbs: {
     swiper: swiper
   },
-  allowTouchMove: false
+  allowTouchMove: false,
+  watchSlidesProgress: true
 });
 
 /***/ }),

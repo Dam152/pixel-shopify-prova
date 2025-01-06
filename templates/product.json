@@ -11,7 +11,19 @@
   "sections": {
     "main": {
       "type": "main-product",
-      "settings": {}
+      "settings": {},
+      "blocks": {
+        "titleProduct": {
+          "type": "title_product"
+        },
+        "priceProduct": {
+          "type": "price_product"
+        },
+        "descriptionProduct": {
+          "type": "description_product"
+        }
+      },
+      "block_order": ["titleProduct", "priceProduct", "descriptionProduct"]
     },
     "featured_collection_3RhMDj": {
       "type": "featured_collection",
@@ -23,8 +35,5 @@
       }
     }
   },
-  "order": [
-    "main",
-    "featured_collection_3RhMDj"
-  ]
+  "order": ["main", "featured_collection_3RhMDj"]
 }

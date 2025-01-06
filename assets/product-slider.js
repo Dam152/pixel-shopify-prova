@@ -2,7 +2,9 @@ import Swiper from "swiper/bundle";
 import "swiper/css/bundle";
 
 const swiper = new Swiper(".product-image-slider-thumb", {
-  watchSlidesProgress: true,
+  mousewheel: {
+    releaseOnEdges: true,
+  },
   breakpoints: {
     768: {
       direction: "vertical",
@@ -29,4 +31,5 @@ const swiper2 = new Swiper(".product-image-slider", {
     swiper: swiper,
   },
   allowTouchMove: false,
+  watchSlidesProgress: true,
 });
