@@ -11,19 +11,22 @@
   "sections": {
     "main": {
       "type": "main-product",
-      "settings": {},
       "blocks": {
         "titleProduct": {
-          "type": "title_product"
+          "type": "title_product",
+          "settings": {}
         },
         "priceProduct": {
-          "type": "price_product"
+          "type": "price_product",
+          "settings": {}
         },
         "descriptionProduct": {
-          "type": "description_product"
+          "type": "description_product",
+          "settings": {}
         },
         "colors": {
-          "type": "colors_product"
+          "type": "colors_product",
+          "settings": {}
         }
       },
       "block_order": [
@@ -31,7 +34,8 @@
         "priceProduct",
         "descriptionProduct",
         "colors"
-      ]
+      ],
+      "settings": {}
     },
     "featured_collection_3RhMDj": {
       "type": "featured_collection",
@@ -43,5 +47,8 @@
       }
     }
   },
-  "order": ["main", "featured_collection_3RhMDj"]
+  "order": [
+    "main",
+    "featured_collection_3RhMDj"
+  ]
 }

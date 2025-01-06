@@ -23,15 +23,15 @@
           "type": "subtitle_hero",
           "settings": {
             "subtitle_hero": "Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.",
-            "subtitle_color": "rgba(0, 0, 0, 0.6)"
+            "subtitle_color": "#000000"
           }
         },
         "button": {
           "type": "hero_button",
           "settings": {
-            "button_color": "#000",
+            "button_color": "#000000",
             "text_button": "Shop Now",
-            "buttontext_color": "#fff",
+            "buttontext_color": "#ffffff",
             "url_button": "shopify://collections/all"
           }
         },
@@ -47,7 +47,7 @@
         "img"
       ],
       "settings": {
-        "color_background": "#F2F0F1"
+        "color_background": "#f2f0f1"
       }
     },
     "loghi": {
@@ -82,6 +82,12 @@
           "settings": {
             "logo_item": "shopify://shop_images/Group.svg"
           }
+        },
+        "loghi_HLkFBB": {
+          "type": "loghi",
+          "settings": {
+            "logo_item": "shopify://shop_images/logo_bodyrockbianco.png"
+          }
         }
       },
       "block_order": [
@@ -89,10 +95,11 @@
         "loghi_6WEQCN",
         "loghi_ky4HDh",
         "loghi_d773y7",
-        "loghi_Gh3wAy"
+        "loghi_Gh3wAy",
+        "loghi_HLkFBB"
       ],
       "settings": {
-        "section_background": "#000"
+        "section_background": "#000000"
       }
     },
     "collection": {
@@ -117,7 +124,7 @@
       "type": "featured_collections_list",
       "settings": {
         "padding_section": false,
-        "color_section": "#F0F0F0",
+        "color_section": "#f0f0f0",
         "title_section": "BROWSE BY dress STYLE",
         "collection_one": "casual",
         "collection_two": "formal",
