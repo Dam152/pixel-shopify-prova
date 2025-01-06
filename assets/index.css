@@ -2167,6 +2167,10 @@ video {
     height: auto;
   }
 
+  .max-sm\:h-\[390px\] {
+    height: 390px;
+  }
+
   .max-sm\:min-h-\[289px\] {
     min-height: 289px;
   }

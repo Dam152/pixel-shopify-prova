@@ -29,7 +29,7 @@
               <img
                 src="{{ item | image_url  }}"
                 alt="{{ item.alt }}"
-                class="rounded-[24px] w-full h-full max-sm:h-[290px] "
+                class="rounded-[24px] w-full h-full max-sm:h-[390px] "
                 width="{{ item.width }}"
                 height="{{ item.height }}"
               >
@@ -41,8 +41,3 @@
     <div class="w-1/2  flex flex-col max-md:w-full"></div>
   </div>
 </section>
-
-{%- comment -%}
-  x-data="{ index: 0, logIndex() { console.log(this.index); } }"
-   @click="index = {{ forloop.index0 }}; logIndex()"
-{%- endcomment -%}
