@@ -82,12 +82,6 @@
           "settings": {
             "logo_item": "shopify://shop_images/Group.svg"
           }
-        },
-        "loghi_HLkFBB": {
-          "type": "loghi",
-          "settings": {
-            "logo_item": "shopify://shop_images/logo_bodyrockbianco.png"
-          }
         }
       },
       "block_order": [
@@ -95,8 +89,7 @@
         "loghi_6WEQCN",
         "loghi_ky4HDh",
         "loghi_d773y7",
-        "loghi_Gh3wAy",
-        "loghi_HLkFBB"
+        "loghi_Gh3wAy"
       ],
       "settings": {
         "section_background": "#000000"
