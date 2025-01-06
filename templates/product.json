@@ -21,9 +21,17 @@
         },
         "descriptionProduct": {
           "type": "description_product"
+        },
+        "colors": {
+          "type": "colors_product"
         }
       },
-      "block_order": ["titleProduct", "priceProduct", "descriptionProduct"]
+      "block_order": [
+        "titleProduct",
+        "priceProduct",
+        "descriptionProduct",
+        "colors"
+      ]
     },
     "featured_collection_3RhMDj": {
       "type": "featured_collection",

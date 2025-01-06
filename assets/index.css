@@ -2156,6 +2156,10 @@ video {
     margin-top: 0px;
   }
 
+  .max-sm\:mt-6 {
+    margin-top: 1.5rem;
+  }
+
   .max-sm\:mt-8 {
     margin-top: 2rem;
   }
