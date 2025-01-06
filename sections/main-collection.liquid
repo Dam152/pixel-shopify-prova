@@ -1,0 +1,5 @@
+<div class="main-container flex flex-col gap-4">
+  {% for item in collection.products %}
+    <a href="{{ item.url }}"> {{ item.title }}</a>
+  {% endfor %}
+</div>
