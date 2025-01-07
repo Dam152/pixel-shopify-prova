@@ -37,7 +37,9 @@
         },
         "img": {
           "type": "hero_img",
-          "settings": {}
+          "settings": {
+            "img_hero": "shopify://shop_images/Hero_image.jpg"
+          }
         }
       },
       "block_order": [
