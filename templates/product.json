@@ -24,8 +24,12 @@
           "type": "description_product",
           "settings": {}
         },
-        "colors": {
-          "type": "colors_product",
+        "variant": {
+          "type": "variant_product",
+          "settings": {}
+        },
+        "shop": {
+          "type": "shop_block",
           "settings": {}
         }
       },
@@ -33,7 +37,8 @@
         "titleProduct",
         "priceProduct",
         "descriptionProduct",
-        "colors"
+        "variant",
+        "shop"
       ],
       "settings": {}
     },
@@ -47,8 +52,5 @@
       }
     }
   },
-  "order": [
-    "main",
-    "featured_collection_3RhMDj"
-  ]
+  "order": ["main", "featured_collection_3RhMDj"]
 }

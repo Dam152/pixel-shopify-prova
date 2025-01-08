@@ -40,7 +40,16 @@
     </div>
     <div class="w-1/2  flex flex-col max-md:w-full max-sm:mt-6">
       {% form 'product', product %}
-        <div class="flex flex-col w-full gap-6 max-sm:gap-4">
+        <div
+          x-data="
+            { selectionColor: '{{ product.options_with_values[0].values[0] }}',
+            selectionTaglia: '{{ product.options_with_values[1].values[0] }}', numberProduct: 1}
+          "
+          class="flex flex-col w-full gap-6 max-sm:gap-4"
+        >
+          <input type="hidden" id="color" name="properties[Color]" :value="selectionColor">
+          <input type="hidden" id="dimensione" name="properties[Dimensione]" :value="selectionTaglia">
+          <input type="hidden" id="quantita" name="quantity" :value="numberProduct">
           {% for block in section.blocks %}
             {% case block.type %}
               {% when 'title_product' %}
@@ -73,22 +82,70 @@
                   {{ product.content }}
                 </div>
 
-              {% when 'colors_product' %}
+              {% when 'variant_product' %}
                 <div class="flex flex-col gap-4">
-                  <span>Select Color</span>
-                  <div class="flex gap-4">
+                  {% unless product.has_only_default_variant %}
                     {% for item in product.options_with_values %}
                       {% if item.name == 'Color' %}
-                        {% if item.values %}
+                        <span>{{ item.name }}</span>
+
+                        <div class="flex gap-4 items-center pb-6 border-b border-slate-300">
                           {% for value in item.values %}
-                            <a href="">{{ value.name }}</a>
+                            <div
+                              @click="selectionColor = '{{ value |  escape }}'"
+                              x-bind:class="selectionColor == '{{ value }}'? 'bg-black text-white' : '' "
+                              class="px-4 py-2  cursor-pointer transition duration-300 ease-linear rounded-[64px] border border-black flex items-center justify-center w-fit"
+                            >
+                              <span for="{{ value.name }}"> {{ value }}</span>
+                            </div>
                           {% endfor %}
-                        {% else %}
-                          <p>Nessun colore da selezionare</p>
-                        {% endif %}
+                        </div>
+                      {% endif %}
+
+                      {% if item.name == 'Dimensione' %}
+                        <span>{{ item.name }}</span>
+                        <div class="flex items-center gap-4  pb-6 border-b border-slate-300">
+                          {% for option in item.values %}
+                            <div
+                              @click="selectionTaglia = '{{ option |  escape }}'"
+                              x-bind:class="selectionTaglia == '{{ option }}'? 'bg-black text-white' : '' "
+                              class=" w-12 h-12 cursor-pointer transition duration-300 ease-linear rounded-[50%] border border-black flex items-center justify-center  "
+                            >
+                              <span for="{{ option  }}"> {{ option }}</span>
+                            </div>
+                          {% endfor %}
+                        </div>
                       {% endif %}
                     {% endfor %}
+                  {% endunless %}
+                </div>
+              {% when 'shop_block' %}
+                <div class="w-full flex justify-between gap-4 max-sm:flex-col">
+                  <div
+                    class="flex items-center  justify-between h-[52px] bg-slate-400 w-1/4 rounded-[64px] max-sm:w-full px-5 py-4 "
+                  >
+                    <span
+                      @click="numberProduct = numberProduct > 1 ? numberProduct - 1 : 1"
+                      class="text-[2.4rem] cursor-pointer"
+                      >-</span
+                    >
+                    <span x-html="numberProduct" class="text-[2rem]"></span>
+                    <span
+                      @click="numberProduct =  numberProduct + 1"
+                      class="text-[2.4rem] cursor-pointer"
+                      >+</span
+                    >
                   </div>
+                  <button
+                    class="w-3/4 px-4 py-2 bg-black text-white rounded-[64px] flex items-center justify-center min-h-[52px] max-sm:w-full"
+                    type="submit"
+                    name="add"
+                    {% if product.selected_or_first_available_variant == false %}
+                      disabled
+                    {% endif %}
+                  >
+                    {{ block.settings.text_button }}
+                  </button>
                 </div>
             {% endcase %}
           {% endfor %}
@@ -97,6 +154,13 @@
     </div>
   </div>
 </section>
+
+<style>
+  .input-number-product {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+</style>
 
 {% schema %}
 {
@@ -120,9 +184,22 @@
       "limit": 1
     },
     {
-      "name": "Colors Product",
-      "type": "colors_product",
+      "name": "Variant Product",
+      "type": "variant_product",
       "limit": 1
+    },
+    {
+      "name": "Shop Block",
+      "type": "shop_block",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text_button",
+          "label": "Button Submit Text",
+          "default": "Add To Cart"
+        }
+      ]
     }
   ]
 }
