@@ -1,0 +1,13 @@
+<div class="flex gap-4 items-center ">
+  <span class="text-[3.2rem] font-bold max-sm:text-[2.4rem]">{{ el.price | money }}</span>
+  <span class="text-[3.2rem] font-bold max-sm:text-[2.4rem] text-slate-500 line-through">
+    {{ el.compare_at_price | money }}
+  </span>
+  {% if el.compare_at_price %}
+    <span class="px-[14px] py-[6px] rounded-[62px] flex justify-center items-center bg-pink-200  text-red-500">
+      -
+      {{ el.compare_at_price | minus: el.price | times: 100 | divided_by: el.compare_at_price }}
+      %
+    </span>
+  {% endif %}
+</div>

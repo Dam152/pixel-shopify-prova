@@ -1,0 +1,36 @@
+<div class="flex flex-col gap-4 max-w-[162px] max-md:flex w-full max-md:max-w-full">
+  <div
+    class="product-image-slider-thumb w-full h-full"
+  >
+    <div class="swiper-wrapper">
+      {% for item in el.images %}
+        <div thumbsSlider="" class="swiper-slide">
+          <img
+            src="{{ item | image_url }}"
+            alt="{{ item.alt }}"
+            width="{{ item.width }}"
+            height="{{ item.height }}"
+            class="h-[167px] rounded-[24px] max-sm:h-[106px] cursor-pointer"
+            x-bind:class="index == {{ forloop.index0 }} ? 'border border-black' : ''"
+          >
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="product-image-slider overflow-hidden">
+  <div class="swiper-wrapper">
+    {% for item in el.images %}
+      <div class="swiper-slide">
+        <img
+          src="{{ item | image_url  }}"
+          alt="{{ item.alt }}"
+          class="rounded-[24px] w-full h-full max-sm:h-[390px] "
+          width="{{ item.width }}"
+          height="{{ item.height }}"
+        >
+      </div>
+    {% endfor %}
+  </div>
+</div>

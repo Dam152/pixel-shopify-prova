@@ -1,166 +1,149 @@
 <section class="w-full">
   <div class="main-container border-t border-b border-slate-300 max-sm:py-[32px] py-[64px] flex max-md:flex-col gap-10 max-md:gap-6">
+    {%- # Product Carousel -%}
     <div class="w-1/2 flex max-md:w-full gap-4 max-md:flex-col-reverse h-[530px] overflow-hidden max-sm:h-auto">
-      <div class="flex flex-col gap-4 max-w-[162px] max-md:flex w-full max-md:max-w-full">
-        <div
-          class="product-image-slider-thumb w-full h-full"
-        >
-          <div class="swiper-wrapper">
-            {% for item in product.images %}
-              <div thumbsSlider="" class="swiper-slide">
-                <img
-                  src="{{ item | image_url }}"
-                  alt="{{ item.alt }}"
-                  width="{{ item.width }}"
-                  height="{{ item.height }}"
-                  class="h-[167px] rounded-[24px] max-sm:h-[106px] cursor-pointer"
-                  x-bind:class="index == {{ forloop.index0 }} ? 'border border-black' : ''"
-                >
+      {% render 'product_slider', el: product %}
+    </div>
+
+    {%- # Product Data -%}
+
+    <div class="w-1/2  flex flex-col max-md:w-full max-sm:mt-6">
+      <div
+        class="flex flex-col w-full gap-6 max-sm:gap-4"
+      >
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'title_product' %}
+              <h4 class="text-[4rem] font-bold max-md:max-w-[260px] max-md:text-[3rem] uppercase leading-[28px]">
+                {{ product.title }}
+              </h4>
+
+            {%- when 'price_product' -%}
+              {% render 'product_price', el: product %}
+
+            {% when 'description_product' %}
+              <div class="text-[1.6rem] max-sm:text-[1.4rem] text-slate-700 leading-[22px] border-b border-slate-300 pb-6">
+                {{ product.content }}
               </div>
+          {% endcase %}
+        {% endfor %}
+
+        {%- # Form product -%}
+
+        {% form 'product', product %}
+          <div data-section="form-container-product" class="w-full product-option">
+            <input id="product-id" type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'variant_product' %}
+                  {% if product.variants.size > 1 %}
+                    <div class="w-full flex flex-col gap-6 pb-6 border-b border-slate-300">
+                      {% for option in product.options_with_values %}
+                        {%- if option.name == 'Color' -%}
+                          <fieldset>
+                            <legend class="mb-4">{{ option.name }}</legend>
+                            <div
+                              class="flex gap-4"
+                            >
+                              {% for value in option.values %}
+                                <div>
+                                  <input
+                                    {% if option.selected_value == value %}
+                                      checked
+                                    {% endif %}
+                                    type="radio"
+                                    name="{{ option.name}}"
+                                    value="{{ value }}"
+                                    id="{{ option.name |  handleize }} - {{ value |  handleize }}"
+                                    class="hidden"
+                                  >
+                                  <label
+                                    for="{{ option.name |  handleize }} - {{ value |  handleize }}"
+                                    class="cursor-pointer px-4 py-2 border border-black rounded-[64px] transiton ease-linear duration-200"
+                                  >
+                                    {{ value.name }}
+                                  </label>
+                                </div>
+                              {% endfor %}
+                            </div>
+                          </fieldset>
+                        {%- endif -%}
+                        {%- if option.name == 'Dimensione' -%}
+                          <fieldset>
+                            <legend class="mb-4">{{ option.name }}</legend>
+                            <div
+                              class="flex gap-4"
+                            >
+                              {% for value in option.values %}
+                                <div class="">
+                                  <input
+                                    {% if option.selected_value == value %}
+                                      checked
+                                    {% endif %}
+                                    type="radio"
+                                    name="{{ option.name}}"
+                                    value="{{ value }}"
+                                    id="{{ option.name |  handleize }} - {{ value |  handleize }}"
+                                    class="hidden"
+                                  >
+                                  <label
+                                    for="{{ option.name |  handleize }} - {{ value |  handleize }}"
+                                    class="cursor-pointer px-4 py-2 border border-black  transiton ease-linear duration-200 "
+                                  >
+                                    {{ value.name }}
+                                  </label>
+                                </div>
+                              {% endfor %}
+                            </div>
+                          </fieldset>
+                        {%- endif -%}
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                {%- when 'shop_block' -%}
+                  {%- comment -%}
+                      <div class="mt-6">
+                      <button type="submit">{{ block.settings.text_button }}</button>
+                    </div>
+                  {%- endcomment -%}
+              {% endcase %}
             {% endfor %}
           </div>
-        </div>
+        {% endform %}
       </div>
-
-      <div class="product-image-slider overflow-hidden">
-        <div class="swiper-wrapper">
-          {% for item in product.images %}
-            <div class="swiper-slide">
-              <img
-                src="{{ item | image_url  }}"
-                alt="{{ item.alt }}"
-                class="rounded-[24px] w-full h-full max-sm:h-[390px] "
-                width="{{ item.width }}"
-                height="{{ item.height }}"
-              >
-            </div>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-    <div class="w-1/2  flex flex-col max-md:w-full max-sm:mt-6">
-      {% form 'product', product %}
-        <div
-          x-data="
-            { selectionColor: '{{ product.options_with_values[0].values[0] }}',
-            selectionTaglia: '{{ product.options_with_values[1].values[0] }}', numberProduct: 1}
-          "
-          class="flex flex-col w-full gap-6 max-sm:gap-4"
-        >
-          <input type="hidden" id="color" name="properties[Color]" :value="selectionColor">
-          <input type="hidden" id="dimensione" name="properties[Dimensione]" :value="selectionTaglia">
-          <input type="hidden" id="quantita" name="quantity" :value="numberProduct">
-          {% for block in section.blocks %}
-            {% case block.type %}
-              {% when 'title_product' %}
-                <h4 class="text-[4rem] font-bold max-md:max-w-[260px] max-md:text-[3rem] uppercase leading-[28px]">
-                  {{ product.title }}
-                </h4>
-
-              {%- when 'price_product' -%}
-                <div class="flex gap-4 items-center ">
-                  <span class="text-[3.2rem] font-bold max-sm:text-[2.4rem]">{{ product.price | money }}</span>
-                  <span class="text-[3.2rem] font-bold max-sm:text-[2.4rem] text-slate-500 line-through">
-                    {{- product.compare_at_price | money -}}
-                  </span>
-                  {% if product.compare_at_price %}
-                    <span class="px-[14px] py-[6px] rounded-[62px] flex justify-center items-center bg-pink-200  text-red-500">
-                      -
-                      {{
-                        product.compare_at_price
-                        | minus: product.price
-                        | times: 100
-                        | divided_by: product.compare_at_price
-                      }}
-                      %
-                    </span>
-                  {% endif %}
-                </div>
-
-              {% when 'description_product' %}
-                <div class="text-[1.6rem] max-sm:text-[1.4rem] text-slate-700 leading-[22px] border-b border-slate-300 pb-6">
-                  {{ product.content }}
-                </div>
-
-              {% when 'variant_product' %}
-                <div class="flex flex-col gap-4">
-                  {% unless product.has_only_default_variant %}
-                    {% for item in product.options_with_values %}
-                      {% if item.name == 'Color' %}
-                        <span>{{ item.name }}</span>
-
-                        <div class="flex gap-4 items-center pb-6 border-b border-slate-300">
-                          {% for value in item.values %}
-                            <div
-                              @click="selectionColor = '{{ value |  escape }}'"
-                              x-bind:class="selectionColor == '{{ value }}'? 'bg-black text-white' : '' "
-                              class="px-4 py-2  cursor-pointer transition duration-300 ease-linear rounded-[64px] border border-black flex items-center justify-center w-fit"
-                            >
-                              <span for="{{ value.name }}"> {{ value }}</span>
-                            </div>
-                          {% endfor %}
-                        </div>
-                      {% endif %}
-
-                      {% if item.name == 'Dimensione' %}
-                        <span>{{ item.name }}</span>
-                        <div class="flex items-center gap-4  pb-6 border-b border-slate-300">
-                          {% for option in item.values %}
-                            <div
-                              @click="selectionTaglia = '{{ option |  escape }}'"
-                              x-bind:class="selectionTaglia == '{{ option }}'? 'bg-black text-white' : '' "
-                              class=" w-12 h-12 cursor-pointer transition duration-300 ease-linear rounded-[50%] border border-black flex items-center justify-center  "
-                            >
-                              <span for="{{ option  }}"> {{ option }}</span>
-                            </div>
-                          {% endfor %}
-                        </div>
-                      {% endif %}
-                    {% endfor %}
-                  {% endunless %}
-                </div>
-              {% when 'shop_block' %}
-                <div class="w-full flex justify-between gap-4 max-sm:flex-col">
-                  <div
-                    class="flex items-center  justify-between h-[52px] bg-slate-400 w-1/4 rounded-[64px] max-sm:w-full px-5 py-4 "
-                  >
-                    <span
-                      @click="numberProduct = numberProduct > 1 ? numberProduct - 1 : 1"
-                      class="text-[2.4rem] cursor-pointer"
-                      >-</span
-                    >
-                    <span x-html="numberProduct" class="text-[2rem]"></span>
-                    <span
-                      @click="numberProduct =  numberProduct + 1"
-                      class="text-[2.4rem] cursor-pointer"
-                      >+</span
-                    >
-                  </div>
-                  <button
-                    class="w-3/4 px-4 py-2 bg-black text-white rounded-[64px] flex items-center justify-center min-h-[52px] max-sm:w-full"
-                    type="submit"
-                    name="add"
-                    {% if product.selected_or_first_available_variant == false %}
-                      disabled
-                    {% endif %}
-                  >
-                    {{ block.settings.text_button }}
-                  </button>
-                </div>
-            {% endcase %}
-          {% endfor %}
-        </div>
-      {% endform %}
     </div>
   </div>
 </section>
 
-<style>
-  .input-number-product {
-    -webkit-appearance: none;
-    margin: 0;
+<script>
+  let product = {{ product |  json }}
+   document.querySelectorAll('.product-option input[type="radio"]').forEach((radio)=>{
+        radio.addEventListener('change', ()=>{
+            let selectedOption =[];
+            document.querySelectorAll('.product-option input[type="radio"]:checked').forEach((radio)=>{
+               selectedOption.push(radio.value)
+            })
+          let matchedVariant = product.variants.find( variant => {
+              let pass = true
+              for( i=0; i < selectedOption.length; i++){
+                 if(selectedOption.indexOf(variant.options[i] ) === -1){
+                   pass=false;
+                   break;
+                 }
+              }
+              return pass;
+          })
+          document.querySelector('#product-id').value = matchedVariant.id;
+        })
+   });
+</script>
+
+{% style %}
+  .product-option input[type='radio']:checked + label {
+    background-color: black;
+    color: white;
   }
-</style>
+{% endstyle %}
 
 {% schema %}
 {
