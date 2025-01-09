@@ -1508,6 +1508,9 @@ video {
 .w-screen {
   width: 100vw;
 }
+.max-w-\[100px\] {
+  max-width: 100px;
+}
 .max-w-\[162px\] {
   max-width: 162px;
 }

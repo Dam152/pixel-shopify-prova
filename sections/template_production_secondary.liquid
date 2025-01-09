@@ -15,16 +15,34 @@
               {% render 'product_price', el: product %}
             {% when 'variant_product' %}
               {% form 'product', product %}
-                <div class="w-full form-secondary-price">
+                <div class="w-full flex flex-col gap-6 form-secondary-price">
                   {% for opt in product.options_with_values %}
                     {% if opt.name == 'Variante' %}
                       <span>{{ opt.name }}</span>
                       {% for value in opt.values %}
-                        <div class="w-full flex gap-4">
-                          <div class="flex gap-2">
-                            <label for="variant-{{ opt.name }}-{{ value }}">{{ value }}</label>
+                        <div class="w-full flex gap-4 ">
+                          <div
+                            class="w-full flex gap-4 "
+                            x-data="{ quantity: {{ product.variants[forloop.index0].quantity_rule.min }} }"
+                          >
+                            <div class="flex gap-4 w-full justify-between mb-4 items-center">
+                              <span>{{ value | escape }}</span>
+                              <span>{{ product.variants[forloop.index0].price | money }}</span>
+
+                              <input
+                                type="number"
+                                name="quantity"
+                                id="Quantity-{{ value }}"
+                                min="{{ product.variants[forloop.index0].quantity_rule.min }}"
+                                max="{{ product.variants[forloop.index0].quantity_rule.max }}"
+                                x-model="quantity"
+                                class="max-w-[100px] border py-2 px-4"
+                              >
+                              <a :href="`/cart/add?id={{ product.variants[forloop.index0].id}}&quantity=${quantity}`">
+                                Aggiungi al Carrello
+                              </a>
+                            </div>
                           </div>
-                          <a href="/cart/add?id={{ product.variants[forloop.index0].id }}">Aggiungi al carrello</a>
                         </div>
                       {% endfor %}
                     {% endif %}
@@ -63,19 +81,6 @@
       "name": "Variant Product",
       "type": "variant_product",
       "limit": 1
-    },
-    {
-      "name": "Shop Block",
-      "type": "shop_block",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "text",
-          "id": "text_button",
-          "label": "Button Submit Text",
-          "default": "Add To Cart"
-        }
-      ]
     }
   ],
   "presets": [
