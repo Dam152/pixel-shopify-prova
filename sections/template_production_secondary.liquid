@@ -1,0 +1,87 @@
+<section class="w-full">
+  <div class="main-container border-t border-b border-slate-300 max-sm:py-[32px] py-[64px] flex max-md:flex-col gap-10 max-md:gap-6">
+    <div class="w-1/2 flex max-md:w-full gap-4 max-md:flex-col-reverse h-[530px] overflow-hidden max-sm:h-auto">
+      {% render 'product_slider', el: product %}
+    </div>
+    <div class="w-1/2 flex flex-col max-md:w-full max-sm:mt-6">
+      <div class="flex flex-col w-full gap-6 max-sm:gap-4">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'title_product' %}
+              <h4 class="text-[4rem] font-bold max-md:max-w-[260px] max-md:text-[3rem] uppercase leading-[28px]">
+                {{ product.title }}
+              </h4>
+            {% when 'price_product' %}
+              {% render 'product_price', el: product %}
+            {% when 'variant_product' %}
+              {% form 'product', product %}
+                <div class="w-full form-secondary-price">
+                  {% for opt in product.options_with_values %}
+                    {% if opt.name == 'Variante' %}
+                      <span>{{ opt.name }}</span>
+                      {% for value in opt.values %}
+                        <div class="w-full flex gap-4">
+                          <div class="flex gap-2">
+                            <label for="variant-{{ opt.name }}-{{ value }}">{{ value }}</label>
+                          </div>
+                          <a href="/cart/add?id={{ product.variants[forloop.index0].id }}">Aggiungi al carrello</a>
+                        </div>
+                      {% endfor %}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              {% endform %}
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Price Section",
+  "tag": "section",
+  "settings": [],
+  "blocks": [
+    {
+      "name": "Title Product",
+      "type": "title_product",
+      "limit": 1
+    },
+    {
+      "name": "Price Product",
+      "type": "price_product",
+      "limit": 1
+    },
+    {
+      "name": "Description Product",
+      "type": "description_product",
+      "limit": 1
+    },
+    {
+      "name": "Variant Product",
+      "type": "variant_product",
+      "limit": 1
+    },
+    {
+      "name": "Shop Block",
+      "type": "shop_block",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text_button",
+          "label": "Button Submit Text",
+          "default": "Add To Cart"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Price Section"
+    }
+  ]
+}
+{% endschema %}
